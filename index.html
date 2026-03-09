@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karpfen Observatory</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/graphre@0.1.2/dist/graphre.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/nomnoml@1.6.2/dist/nomnoml.js"></script>
+</head>
+<body>
+    <!-- Connection Dialog -->
+    <div id="connect-dialog" class="dialog-overlay">
+        <div class="dialog-box">
+            <h2>Karpfen Observatory</h2>
+            <form id="connect-form">
+                <label for="server-ip">Server IP</label>
+                <input type="text" id="server-ip" value="127.0.0.1" required>
+
+                <label for="server-port">Server Port</label>
+                <input type="number" id="server-port" value="8080" required>
+
+                <button type="submit" id="btn-connect">Connect</button>
+            </form>
+            <div id="connect-error" class="error-msg" style="display:none;"></div>
+
+            <!-- Environment selection (shown after connect) -->
+            <div id="env-selection" style="display:none;">
+                <label for="env-select">Environment</label>
+                <select id="env-select"></select>
+
+                <label for="element-select">Model Element</label>
+                <select id="element-select"></select>
+
+                <button type="button" id="btn-observe">Start Observing</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" style="display:none;">
+        <div id="toolbar">
+            <span>
+                <span id="connection-info"></span>
+            </span>
+            <button id="btn-disconnect">Disconnect</button>
+        </div>
+        <div id="main-content">
+            <div id="trace-panel">
+                <div id="trace-header">
+                    <span class="console-title"><span class="console-dot red"></span><span class="console-dot yellow"></span><span class="console-dot green"></span> Trace Console</span>
+                    <div id="trace-filter">
+                        <label><input type="checkbox" id="filter-tick" checked> Tick</label>
+                        <label><input type="checkbox" id="filter-entry" checked> Entry</label>
+                        <label><input type="checkbox" id="filter-do" checked> Do</label>
+                        <label><input type="checkbox" id="filter-transition" checked> Trans</label>
+                        <label><input type="checkbox" id="filter-event" checked> Event</label>
+                        <label><input type="checkbox" id="filter-error" checked> Error</label>
+                    </div>
+                </div>
+                <div id="trace-log"></div>
+            </div>
+            <div id="visualization-panel">
+                <h3>State Machine: <span id="sm-name"></span></h3>
+                <div id="sm-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/kstates-parser.js"></script>
+    <script src="js/statemachine-renderer.js"></script>
+    <script src="js/trace-panel.js"></script>
+    <script src="js/api-client.js"></script>
+    <script src="js/websocket-client.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
