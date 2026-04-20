@@ -28,4 +28,4 @@ A web-based dashboard for observing state machine execution in real time within 
 
 ---
 
-Large parts of this dashboard are LLM generated based on a detaill service specifications and usecase descriptions of the *karpfen toolkit*.
+**Parts of this dashboard have been created with the help of generative AI.**
